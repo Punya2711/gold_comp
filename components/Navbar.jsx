@@ -18,7 +18,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -30,7 +30,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-xl shadow-md border-b border-gold/20'
+          ? 'maroon-gradient shadow-2xl border-b border-gold/40'
           : 'bg-transparent'
       }`}
     >
@@ -40,17 +40,18 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-1">
           {links.map((l) => {
             const active = pathname === l.href;
+            const baseColor = scrolled ? 'text-white/85' : 'text-maroon';
             return (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`relative px-5 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  active ? 'text-maroon' : 'text-gray-700 hover:text-maroon'
+                className={`relative px-5 py-2 text-sm font-medium tracking-[0.15em] uppercase transition-colors ${
+                  active ? 'text-gold' : `${baseColor} hover:text-gold`
                 }`}
               >
                 {l.label}
                 {active && (
-                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gold rounded-full" />
+                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-6 h-0.5 gold-gradient rounded-full" />
                 )}
               </Link>
             );
@@ -59,13 +60,13 @@ export default function Navbar() {
 
         <a
           href="tel:8884848204"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-white text-sm font-semibold gold-shadow hover:scale-[1.03] transition-transform"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-maroon text-sm font-bold gold-shadow hover:scale-[1.03] transition-transform"
         >
           <Phone className="w-4 h-4" /> 8884848204
         </a>
 
         <button
-          className="md:hidden p-2 text-maroon"
+          className={`md:hidden p-2 ${scrolled ? 'text-gold' : 'text-maroon'}`}
           onClick={() => setOpen((o) => !o)}
           aria-label="Menu"
         >
@@ -74,14 +75,14 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gold/20 px-5 py-6 space-y-3">
+        <div className="md:hidden maroon-gradient border-t border-gold/30 px-5 py-6 space-y-3">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`block py-2 text-base font-medium ${
-                pathname === l.href ? 'text-gold' : 'text-gray-800'
+              className={`block py-2 text-base font-medium tracking-wider uppercase ${
+                pathname === l.href ? 'text-gold' : 'text-white/85'
               }`}
             >
               {l.label}
@@ -89,7 +90,7 @@ export default function Navbar() {
           ))}
           <a
             href="tel:8884848204"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-white text-sm font-semibold w-full justify-center"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-maroon text-sm font-bold w-full justify-center"
           >
             <Phone className="w-4 h-4" /> Call 8884848204
           </a>
