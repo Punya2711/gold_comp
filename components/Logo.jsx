@@ -4,10 +4,11 @@ import Image from 'next/image';
 
 export default function Logo({ variant = 'dark', size = 'md' }) {
   const sizes = {
-    sm: 'h-10',
-    md: 'h-14',
-    lg: 'h-20',
-    xl: 'h-28',
+    sm: 'h-20',
+    md: 'h-28',
+    lg: 'h-40',
+    xl: 'h-52',
+    xxl: 'h-64',
   };
   const h = sizes[size] || sizes.md;
 
