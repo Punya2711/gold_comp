@@ -113,10 +113,31 @@ export default function AboutPage() {
             <span className="text-xs tracking-[0.35em] uppercase font-semibold text-gold">— The Visionaries —</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-maroon mt-3">Meet Our <span className="gold-gradient-text">Leadership</span></h2>
           </div>
-          <div className="mt-16 grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            <FounderCard name="Mangala H" role="Founder" initial="M" badge="5+ Years" desc="With deep expertise in gold valuation, Mangala founded Rayaru Gold with a single vision — to make gold selling an experience customers trust and enjoy." />
-            <FounderCard name="Sunil Kumar" role="Co-Founder" initial="S" badge="Operations Lead" desc="Sunil ensures that every customer leaves our showroom completely satisfied. He oversees evaluations, payments, and customer relationships." />
-          </div>
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+  <FounderCard
+    name="Mangala H"
+    role="Founder"
+    initial="M"
+    badge="5+ Years"
+    desc="With deep expertise in gold valuation, Mangala founded Rayaru Gold with a single vision — to make gold selling an experience customers trust and enjoy."
+  />
+
+  <FounderCard
+    name="Sunil Kumar"
+    role="Co-Founder"
+    initial="S"
+    badge="Operations Lead"
+    desc="Sunil ensures that every customer leaves our showroom completely satisfied. He oversees evaluations, payments, and customer relationships."
+  />
+
+  <FounderCard
+    name="Shivakumar V"
+    role="Chief Operations Officer"
+    initial="S"
+    badge="Operations Lead"
+    desc="Shivakumar leads our operations team, ensuring seamless execution of all gold-related services and maintaining the highest standards of customer satisfaction."
+  />
+</div>
         </div>
       </section>
 
@@ -169,18 +190,42 @@ function Card({ icon: Icon, title, text }) {
 
 function FounderCard({ name, role, initial, badge, desc }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative bg-white rounded-[2rem] overflow-hidden luxe-shadow border border-gold/20">
-      <div className="h-32 maroon-gradient relative">
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at center, #D4AF37 0%, transparent 60%)' }} />
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="relative bg-white rounded-[2rem] overflow-hidden luxe-shadow border border-gold/20 h-full"
+    >
+      <div className="h-24 maroon-gradient relative">
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at center, #D4AF37 0%, transparent 60%)",
+          }}
+        />
       </div>
-      <div className="px-8 pb-8 -mt-16 text-center">
-        <div className="w-32 h-32 mx-auto rounded-full gold-gradient flex items-center justify-center text-white font-display font-bold text-5xl border-4 border-white gold-shadow">
+
+      <div className="px-6 pb-8 -mt-12 text-center flex flex-col h-full">
+        <div className="w-24 h-24 mx-auto rounded-full gold-gradient flex items-center justify-center text-white font-display font-bold text-4xl border-4 border-white gold-shadow">
           {initial}
         </div>
-        <h3 className="mt-5 font-display text-2xl font-bold text-maroon">{name}</h3>
-        <p className="text-gold font-semibold text-sm tracking-wider uppercase mt-1">{role}</p>
-        <span className="inline-block mt-3 px-3 py-1 rounded-full bg-gold/10 text-maroon text-xs font-semibold">{badge}</span>
-        <p className="mt-4 text-sm text-gray-600 leading-relaxed">{desc}</p>
+
+        <h3 className="mt-4 font-display text-xl font-bold text-maroon">
+          {name}
+        </h3>
+
+        <p className="text-gold font-semibold text-xs tracking-wider uppercase mt-1">
+          {role}
+        </p>
+
+        <span className="inline-block mt-3 px-3 py-1 rounded-full bg-gold/10 text-maroon text-xs font-semibold">
+          {badge}
+        </span>
+
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed flex-grow">
+          {desc}
+        </p>
       </div>
     </motion.div>
   );
